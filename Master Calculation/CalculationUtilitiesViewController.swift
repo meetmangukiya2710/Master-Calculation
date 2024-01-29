@@ -65,10 +65,10 @@ class CalculationUtilitiesViewController: UIViewController {
     }
     
     
-    @IBAction func mutualFundAction(_ sender: UIButton) {
-        let navigateButton1 = storyboard?.instantiateViewController(identifier: "Mutual_FundViewController") as! Mutual_FundViewController
-        navigationController?.pushViewController(navigateButton1, animated: true)
-    }
+//    @IBAction func mutualFundAction(_ sender: UIButton) {
+//        let navigateButton1 = storyboard?.instantiateViewController(identifier: "Mutual_FundViewController") as! Mutual_FundViewController
+//        navigationController?.pushViewController(navigateButton1, animated: true)
+//    }
     
     @IBAction func interestAction(_ sender: UIButton) {
         let navigateButton2 = storyboard?.instantiateViewController(identifier: "InterestViewController") as! InterestViewController
