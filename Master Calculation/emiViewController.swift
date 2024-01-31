@@ -50,19 +50,21 @@ class emiViewController: UIViewController {
     }
     
     @IBAction func EMIButton(_ sender: Any) {
-        if let interestRate = Double(interestRateOutlet.text!),
-            let timePeriod = Double(timePeriodOutlet.text!),
-            let loanAmount = Double(loanAmountOutlet.text!){
+        if let Rate = Double(interestRateOutlet.text!),
+            let Years = Double(timePeriodOutlet.text!),
+            let loanAMount = Double(loanAmountOutlet.text!){
             
-            var monthlyInterestRate = interestRate * 12 / 100
-            var time = timePeriod * 12
-            var divisor = pow(1 + monthlyInterestRate, Double(time)) - 1
-            var emi = (loanAmount * monthlyInterestRate * divisor) / (divisor - 1)
-            var totalInterest = emi * Double(time) - loanAmount
+            var Emi = String(EMI(loanAMount: Double(loanAmountOutlet.text!) ?? 0, Rate: Double(interestRateOutlet.text!) ?? 0, Years: Double(timePeriodOutlet.text!)!))
             
-            interest_Amount.text = "Rs \(Int(emi))"
-            total_Interest.text = "Rs \(Int(totalInterest))"
-            Total_Payable_Amount.text = "Rs  \(Int(emi * time))"
+            Total_Payable_Amount.text = String(TotalPayment(Emi: Double(Emi) ?? 0, Years: Int(Double(timePeriodOutlet.text!) ?? 0)))
+            
+            var TotalPayment = (TotalPayment(Emi: Double(Emi) ?? 0, Years: Int(Double(timePeriodOutlet.text!) ?? 0)))
+            
+            total_Interest.text = String(interest(TotalPayment: Double(TotalPayment), loanAMount: Double(loanAmountOutlet.text!) ?? 0))
+            
+            interest_Amount.text = String(InterestRate(loanAmount: Double(loanAMount ?? 0), Years: Double(Years ?? 0)))
+            
+            
         }
         else if loanAmountOutlet.text == "" && interestRateOutlet.text == "" && timePeriodOutlet.text == "" {
             error(title: "Error!", message: "Enter the Details")
@@ -88,6 +90,33 @@ class emiViewController: UIViewController {
     @IBAction func BackButtonAction(_ sender: Any) {
         let navigate = storyboard?.instantiateViewController(identifier: "CalculationUtilitiesViewController") as! CalculationUtilitiesViewController
         navigationController?.popViewController(animated: true)
+    }
+    
+    func EMI(loanAMount : Double, Rate: Double, Years: Double)->Double{
+        let interestvalue = Rate / 1200
+        let monthly = Years * 12
+        let Total = loanAMount * interestvalue / (1 - (pow(1/(1 + interestvalue), monthly)))
+        return Total
+
+    }
+    
+    func TotalPayment( Emi: Double, Years: Int  )-> Double{
+        let totalMonth = Years * 12
+        let Total = Emi * Double(totalMonth)
+        return Total
+        
+    }
+    
+    func interest(TotalPayment: Double, loanAMount: Double) -> Double {
+        let FinalInterest = TotalPayment - loanAMount
+        return FinalInterest
+        
+    }
+    
+    func InterestRate(loanAmount: Double, Years: Double) -> Double {
+        let InterestAmount = loanAmount * (Years/12)
+        return InterestAmount
+        
     }
 
 }

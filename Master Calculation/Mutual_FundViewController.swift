@@ -50,85 +50,170 @@ class Mutual_FundViewController: UIViewController {
         backButtonOutlet.layer.borderColor = mycolor.cgColor
     }
     
-    
-    @IBAction func mutualFundButton(_ sender: Any) {
-//        if let monthlyInvestment = Double(monthlyAmountOutlet.text!), let interestRate = Double(returnOutlet.text!), let timePeriod = Double(timeOutlet.text!) {
-            
-//            let numberOfPayments = Int(timePeriod * 12)
-//            let investedAmount = monthlyInvestment * Double(numberOfPayments)
-//            let interestGain = investedAmount * (1 - pow(1 + expectedReturn, 1/12)) / (1/12)
-//            let totalValue = investedAmount + interestGain
-//
-//            let totalMonths = timePeriod * MONTHS_IN_YEAR
-//            let totalInvestment = monthlyInvestment * totalMonths
-//            let growthFactor = pow(1.0 + expectedReturn, MONTHS_IN_YEAR)
-//            let futureValue = totalInvestment * growthFactor
-            
-//            let monthlyInterestRate = interestRate / 12 / 100
-//            let numberOfPayments = timePeriod * 12
-//            let numerator = monthlyInterestRate * monthlyInterestRate
-//            let denominator = 1 - pow(1 + monthlyInterestRate, -numberOfPayments)
-//            let emi = (numerator / denominator).rounded(toPlaces: 2)
-//
-//
-//            investedLabelOutlet.text = String(investedAmount)
-//            est_ReturnLabel.text = String(interestGain)
-//            totalValueLabelOutlet.text = String(totalValue)
-//        }
-//        else
-        if monthlyAmountOutlet.text == "" && returnOutlet.text == "" && timeOutlet.text == "" {
-            error(title: "Error!", message: "Enter the Details")
+    class EmiCalculatorWorker
+    {
+        // MARK: Business Logic
+        func calculateEmi(_ loanAmount : Double, loanTenure : Double, interestRate : Double) -> Double {
+            let interestRateVal = interestRate / 1200
+            let loanTenureVal = loanTenure * 12
+            return loanAmount * interestRateVal / (1 - (pow(1/(1 + interestRateVal), loanTenureVal)))
         }
-        else if monthlyAmountOutlet.text == "" {
-            error(title: "Error!", message: "Enter the Monthly Amount")
+        
+        func calculateTotalPayment(_ emi : Double, loanTenure : NSInteger) -> Double {
+            let totalMonth = loanTenure * 12
+            return emi * Double(totalMonth)
         }
-        else if returnOutlet.text == "" {
-            error(title: "Error!", message: "Enter the Return in (%)")
-        }
-        else if timeOutlet.text == "" {
-            error(title: "Error!", message: "Enter the Time Period")
+        
+        func calculateTotalInterestPayable(_ totalPayment : Double, loanAmount : Double) -> Double {
+            return totalPayment - loanAmount
         }
     }
     
-    func error(title: String,message: String) {
+    
+    @IBAction func calculateActionBtn(_ sender: Any) {
+        let investement = Double(monthlyAmountOutlet.text!)
+        let Expected = Double(returnOutlet.text!)
+        let TP = Double(timeOutlet.text!)
+        
+        totalValueLabelOutlet.text = String(futurevalue(monthly: Double(investement ?? 0), ExReturn: Double(Expected ?? 0), Time: Double(TP! )))
+        let totalvalue = (futurevalue(monthly: Double(investement ?? 0), ExReturn: Double(Expected ?? 0), Time: Double(TP! ))) - Double(investement ?? 0)
+        
+        investedLabelOutlet.text = String(totalvalue)
+        
+        totalValueLabelOutlet.text = String(investement!)
+        
+        if monthlyAmountOutlet.text == ""{
+            alert(title: "Error", message: "plz Enter montly investment")
+        }
+        else if returnOutlet.text == ""{
+            alert(title: "Error", message: "Plz Enter Expected return")
+        }
+        else if timeOutlet.text == ""{
+            alert(title: "Error", message: "Plz Enter Time Period")
+        }
+        
+    }
+    
+    func alert(title: String, message: String){
         let a = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        a.addAction(UIAlertAction(title: "Ok", style: .default))
-        a.addAction(UIAlertAction(title: "Cansel", style: .destructive))
+        a.addAction(UIAlertAction(title: "OK", style: .default))
+        a.addAction(UIAlertAction(title: "Cencle", style: .cancel))
         present(a, animated: true)
     }
     
-    
-    @IBAction func backButtonAction(_ sender: Any) {
-        let navigate = storyboard?.instantiateViewController(identifier: "CalculationUtilitiesViewController") as! CalculationUtilitiesViewController
-        navigationController?.popViewController(animated: true)
+    func futurevalue(monthly: Double, ExReturn: Double, Time: Double) -> Double{
+        let value = monthly * pow(1 + ExReturn / 100, Time)
+        return value
+        
     }
+    
+    
+    
+    
+    //    @IBAction func mutualFundButton(_ sender: Any) {
+    //        if let monthlyInvestment = Double(monthlyAmountOutlet.text!), let expectedReturn = Double(returnOutlet.text!), let timePeriod = Double(timeOutlet.text!) {
+    //
+    //
+    //
+    //            investedLabelOutlet.text = String(investedAmount)
+    //            est_ReturnLabel.text = String(interestGain)
+    //            totalValueLabelOutlet.text = String(totalValue)
+    //        }
+    //        else
+    //        if monthlyAmountOutlet.text == "" && returnOutlet.text == "" && timeOutlet.text == "" {
+    //            error(title: "Error!", message: "Enter the Details")
+    //        }
+    //        else if monthlyAmountOutlet.text == "" {
+    //            error(title: "Error!", message: "Enter the Monthly Amount")
+    //        }
+    //        else if returnOutlet.text == "" {
+    //            error(title: "Error!", message: "Enter the Return in (%)")
+    //        }
+    //        else if timeOutlet.text == "" {
+    //            error(title: "Error!", message: "Enter the Time Period")
+    //        }
+    //    }
+    //
+    //    func error(title: String,message: String) {
+    //        let a = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    //        a.addAction(UIAlertAction(title: "Ok", style: .default))
+    //        a.addAction(UIAlertAction(title: "Cansel", style: .destructive))
+    //        present(a, animated: true)
+    //    }
+    //
+    //
+    //    @IBAction func backButtonAction(_ sender: Any) {
+    //        let navigate = storyboard?.instantiateViewController(identifier: "CalculationUtilitiesViewController") as! CalculationUtilitiesViewController
+    //        navigationController?.popViewController(animated: true)
+    //    }
     
 }
 
 /*
- import Foundation
-
- // Mutual Fund Calculator
-
- // User inputs
- let monthlyInvestment = 100.0 // in dollars
- let expectedReturn = 0.06 // in decimal form (6% -> 0.06)
- let timePeriod = 10.0 // in years
-
- // Calculations
- let numberOfPayments = Int(timePeriod * 12)
- let investedAmount = monthlyInvestment * Double(numberOfPayments)
- let interestGain = investedAmount * (1 - pow(1 + expectedReturn, 1/12)) / (1/12)
- let totalValue = investedAmount + interestGain
-
- // Display results
- print("Invested: $\(investedAmount)")
- print("Interest Gain: $\(interestGain)")
- print("Total Value: $\(totalValue)")
+ class EmiCalculatorWorker
+ {
+ // MARK: Business Logic
+ func calculateEmi(_ loanAmount : Double, loanTenure : Double, interestRate : Double) -> Double {
+ let interestRateVal = interestRate / 1200
+ let loanTenureVal = loanTenure * 12
+ return loanAmount * interestRateVal / (1 - (pow(1/(1 + interestRateVal), loanTenureVal)))
+ }
+ 
+ func calculateTotalPayment(_ emi : Double, loanTenure : NSInteger) -> Double {
+ let totalMonth = loanTenure * 12
+ return emi * Double(totalMonth)
+ }
+ 
+ func calculateTotalInterestPayable(_ totalPayment : Double, loanAmount : Double) -> Double {
+ return totalPayment - loanAmount
+ }
+ }
+ 
+ 3828 (‪Yash Khambhati‬), Now
+ @IBAction func calculateActionBtn(_ sender: Any) {
+ let investement = Double(text1.text!)
+ let Expected = Double(text2.text!)
+ let TP = Double(text3.text!)
+ 
+ Totalvalue.text = String(futurevalue(monthly: Double(investement ?? 0), ExReturn: Double(Expected ?? 0), Time: Double(TP! ?? 0)))
+ let totalvalue = (futurevalue(monthly: Double(investement ?? 0), ExReturn: Double(Expected ?? 0), Time: Double(TP! ?? 0))) - Double(investement ?? 0)
+ 
+ EstReturnOutlet.text = String(totalvalue)
+ 
+ investedOutlet.text = String(investement!)
  
  
  
  
+ 
+ 
+ 
+ if text1.text == ""{
+ alert(title: "Error", message: "plz Enter montly investment")
+ }
+ else if text2.text == ""{
+ alert(title: "Error", message: "Plz Enter Expected return")
+ }
+ else if text3.text == ""{
+ alert(title: "Error", message: "Plz Enter Time Period")
+ }
+ 
+ }
+ 
+ func alert(title: String, message: String){
+ let a = UIAlertController(title: title, message: message, preferredStyle: .alert)
+ a.addAction(UIAlertAction(title: "OK", style: .default))
+ a.addAction(UIAlertAction(title: "Cencle", style: .cancel))
+ present(a, animated: true)
+ }
+ 
+ func futurevalue(monthly: Double, ExReturn: Double, Time: Double) -> Double{
+ let value = monthly * pow(1 + ExReturn / 100, Time)
+ return value
+ 
+ }
+ 
+ }
  
  
  */
