@@ -678,8 +678,7 @@
                                     <color key="baseBackgroundColor" red="0.14345479010000001" green="0.30327910180000001" blue="0.43599325420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="calculateActionBtn:" destination="7Ed-LJ-SoI" eventType="touchUpInside" id="oKt-iY-b96"/>
-                                    <action selector="mutualFundButton:" destination="7Ed-LJ-SoI" eventType="touchUpInside" id="0ds-3k-GMG"/>
+                                    <action selector="mutualFundButton:" destination="7Ed-LJ-SoI" eventType="touchUpInside" id="8jK-Xt-Noc"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="500" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qwr-TH-2df">
