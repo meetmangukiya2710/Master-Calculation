@@ -97,7 +97,7 @@ class Mutual_FundViewController: UIViewController {
     func error(title: String,message: String) {
         let a = UIAlertController(title: title, message: message, preferredStyle: .alert)
         a.addAction(UIAlertAction(title: "Ok", style: .default))
-        a.addAction(UIAlertAction(title: "Cansel", style: .destructive))
+        a.addAction(UIAlertAction(title: "Cancel", style: .destructive))
         present(a, animated: true)
     }
     

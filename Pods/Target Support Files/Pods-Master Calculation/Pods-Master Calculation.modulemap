@@ -1,0 +1,6 @@
+framework module Pods_Master_Calculation {
+  umbrella header "Pods-Master Calculation-umbrella.h"
+
+  export *
+  module * { export * }
+}

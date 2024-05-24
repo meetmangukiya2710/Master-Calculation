@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0451EAD8353B866D99BD40 /* Pods_Master_Calculation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D10B792BDE1790017DBD6A /* Pods_Master_Calculation.framework */; };
 		BA95EDB32B4E5F9E00656955 /* aboutasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA95EDB22B4E5F9E00656955 /* aboutasViewController.swift */; };
 		BA95EDB52B4E659E00656955 /* CalculationUtilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA95EDB42B4E659E00656955 /* CalculationUtilitiesViewController.swift */; };
 		BA95EDB72B4E7A9800656955 /* Mutual_FundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA95EDB62B4E7A9800656955 /* Mutual_FundViewController.swift */; };
@@ -21,9 +22,13 @@
 		BA9C1ED12B4FB1D5007272A9 /* emiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C1ED02B4FB1D5007272A9 /* emiViewController.swift */; };
 		BA9C1ED32B4FB435007272A9 /* school_resultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C1ED22B4FB435007272A9 /* school_resultViewController.swift */; };
 		BA9C1ED52B4FB627007272A9 /* Square_or_HourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9C1ED42B4FB627007272A9 /* Square_or_HourViewController.swift */; };
+		BACE24612BFF2322004DC7D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BACE24602BFF2322004DC7D7 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B85B3AB0814FD0E059821AD /* Pods-Master Calculation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Master Calculation.debug.xcconfig"; path = "Target Support Files/Pods-Master Calculation/Pods-Master Calculation.debug.xcconfig"; sourceTree = "<group>"; };
+		8F87675CFBB69EAC520A08C8 /* Pods-Master Calculation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Master Calculation.release.xcconfig"; path = "Target Support Files/Pods-Master Calculation/Pods-Master Calculation.release.xcconfig"; sourceTree = "<group>"; };
+		A9D10B792BDE1790017DBD6A /* Pods_Master_Calculation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Master_Calculation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA95EDB22B4E5F9E00656955 /* aboutasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutasViewController.swift; sourceTree = "<group>"; };
 		BA95EDB42B4E659E00656955 /* CalculationUtilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationUtilitiesViewController.swift; sourceTree = "<group>"; };
 		BA95EDB62B4E7A9800656955 /* Mutual_FundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mutual_FundViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +45,7 @@
 		BA9C1ED02B4FB1D5007272A9 /* emiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emiViewController.swift; sourceTree = "<group>"; };
 		BA9C1ED22B4FB435007272A9 /* school_resultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = school_resultViewController.swift; sourceTree = "<group>"; };
 		BA9C1ED42B4FB627007272A9 /* Square_or_HourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square_or_HourViewController.swift; sourceTree = "<group>"; };
+		BACE24602BFF2322004DC7D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,17 +53,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E0451EAD8353B866D99BD40 /* Pods_Master_Calculation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16F64853C5ED6BF46AEA81F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4B85B3AB0814FD0E059821AD /* Pods-Master Calculation.debug.xcconfig */,
+				8F87675CFBB69EAC520A08C8 /* Pods-Master Calculation.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		336BDB1449F512760839B244 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A9D10B792BDE1790017DBD6A /* Pods_Master_Calculation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BA99DB152B4D250000CDA536 = {
 			isa = PBXGroup;
 			children = (
 				BA99DB202B4D250000CDA536 /* Master Calculation */,
 				BA99DB1F2B4D250000CDA536 /* Products */,
+				16F64853C5ED6BF46AEA81F7 /* Pods */,
+				336BDB1449F512760839B244 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +113,7 @@
 				BA99DB2A2B4D250100CDA536 /* Assets.xcassets */,
 				BA99DB2C2B4D250100CDA536 /* LaunchScreen.storyboard */,
 				BA99DB2F2B4D250100CDA536 /* Info.plist */,
+				BACE24602BFF2322004DC7D7 /* GoogleService-Info.plist */,
 			);
 			path = "Master Calculation";
 			sourceTree = "<group>";
@@ -98,6 +125,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA99DB322B4D250100CDA536 /* Build configuration list for PBXNativeTarget "Master Calculation" */;
 			buildPhases = (
+				ACDABD45866D4FD21230E7D8 /* [CP] Check Pods Manifest.lock */,
 				BA99DB1A2B4D250000CDA536 /* Sources */,
 				BA99DB1B2B4D250000CDA536 /* Frameworks */,
 				BA99DB1C2B4D250000CDA536 /* Resources */,
@@ -107,8 +135,6 @@
 			dependencies = (
 			);
 			name = "Master Calculation";
-			packageProductDependencies = (
-			);
 			productName = "Master Calculation";
 			productReference = BA99DB1E2B4D250000CDA536 /* Master Calculation.app */;
 			productType = "com.apple.product-type.application";
@@ -137,8 +163,6 @@
 				Base,
 			);
 			mainGroup = BA99DB152B4D250000CDA536;
-			packageReferences = (
-			);
 			productRefGroup = BA99DB1F2B4D250000CDA536 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -155,11 +179,37 @@
 			files = (
 				BA99DB2E2B4D250100CDA536 /* LaunchScreen.storyboard in Resources */,
 				BA99DB2B2B4D250100CDA536 /* Assets.xcassets in Resources */,
+				BACE24612BFF2322004DC7D7 /* GoogleService-Info.plist in Resources */,
 				BA99DB292B4D250000CDA536 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ACDABD45866D4FD21230E7D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Master Calculation-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BA99DB1A2B4D250000CDA536 /* Sources */ = {
@@ -318,6 +368,7 @@
 		};
 		BA99DB332B4D250100CDA536 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B85B3AB0814FD0E059821AD /* Pods-Master Calculation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -345,6 +396,7 @@
 		};
 		BA99DB342B4D250100CDA536 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F87675CFBB69EAC520A08C8 /* Pods-Master Calculation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
